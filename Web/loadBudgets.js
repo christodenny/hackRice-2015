@@ -1,7 +1,7 @@
 function updateVisualization(name, email, title, maxMoney, snapshot) {
     var visualize = document.getElementById("dataVisualization");
     setTimeout(function() {
-        google.load("visualization", "1", {'callback':'', packages:["corechart"]}, 2000);
+        google.load("visualization", "1", {'callback':'alert("2 seconds");', packages:["corechart"]}, 2000);
     });
 
 
@@ -60,8 +60,7 @@ function updateVisualization(name, email, title, maxMoney, snapshot) {
 
 var ref = new Firebase("https://intense-heat-8336.firebaseio.com");
 var user = ref.getAuth();
-
-var email = window.btoa(user.email);
+var email = window.btoa(user.password.email);
 var budget = "users/" + email + "/Budget";
 console.log(budget);
 

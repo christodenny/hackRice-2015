@@ -6,7 +6,7 @@ function update() {
     }
     else {
       var form = document.getElementById("demographics_form");
-      var email = auth.email;
+      var email = auth.password.email;
       var name = "users/" + window.btoa(email);
       // console.log(name);
        var user = ref.child(name);
