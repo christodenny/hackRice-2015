@@ -1,0 +1,14 @@
+Daterz:
+Per person - 
+	- Location
+	- Student? (y/n)
+	- Monthly income
+	- Preferences (per category)
+	- Necessary spending/month (rent, tuition)
+
+Budget Categories - 
+	- Housing/Rent
+	- Foodz
+	- Entertainment
+	- Health/Fitness
+	- Utilities

@@ -47,9 +47,3 @@ body {
   padding: 15px;
   margin: 0 auto;
 }
-
-#id {
-  display: inline-block;
-  color: red;
-  max-width: 300px;
-}
