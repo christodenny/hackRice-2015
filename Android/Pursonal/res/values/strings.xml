@@ -4,5 +4,7 @@
     <string name="app_name">Pursonal</string>
     <string name="hello_world">Hello world!</string>
     <string name="action_settings">Settings</string>
-
+    <string name="lower_budget">Looks like you\'re budget is currently a bit higher than your it should be.</string>
+    <string name="same_budget">Your budget is right where it should be. Keep up the good work!</string>
+    <string name="higher_budget">Great news! You\'re doing great and can afford to bump up your budget a bit this month.</string>
 </resources>

@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/rlMain"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:paddingBottom="@dimen/activity_vertical_margin"
@@ -8,13 +9,14 @@
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="com.hack.rice.pursonal.GoalActivity" >
-    
-    <TextView android:layout_height="wrap_content"
-        android:layout_width="wrap_content"
-        android:textSize="40sp"
+
+    <TextView
         android:id="@+id/tvGoalName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
         android:textColor="@color/green"
-        android:layout_centerHorizontal="true"/>
+        android:textSize="40sp" />
 
     <View
         android:id="@+id/line"
@@ -22,6 +24,86 @@
         android:layout_height="1dp"
         android:layout_below="@+id/tvGoalName"
         android:background="@color/green" />
+
+    <RelativeLayout
+        android:id="@+id/rlWords"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/line" >
+
+        <View
+            android:id="@+id/split"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_centerInParent="true" />
+
+        <TextView
+            android:id="@+id/tvBudget"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_toLeftOf="@+id/split"
+            android:gravity="center"
+            android:text="Budget:"
+            android:textColor="@color/green"
+            android:textSize="30sp" />
+
+        <TextView
+            android:id="@+id/tvSpent"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_toRightOf="@+id/split"
+            android:gravity="center"
+            android:text="Spent:"
+            android:textColor="@color/green"
+            android:textSize="30sp" />
+
+        <TextView
+            android:id="@+id/tvUserBudget"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/tvBudget"
+            android:layout_toLeftOf="@+id/split"
+            android:gravity="center"
+            android:textSize="25sp" />
+
+        <TextView
+            android:id="@+id/tvUserSpent"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/tvSpent"
+            android:layout_toRightOf="@+id/split"
+            android:gravity="center"
+            android:textSize="25sp" />
+    </RelativeLayout>
+
+    <TextView
+        android:paddingTop="40dp"
+        android:id="@+id/tvChartTitle"
+        android:text="Types of Purchases"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/rlWords"
+        android:layout_centerHorizontal="true"
+        android:textColor="@color/green"
+        android:textSize="30sp" />
+
+    <RelativeLayout android:paddingTop="10dp"
+        android:background="@color/green"
+        android:id="@+id/rlUpdateBudget"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_alignParentBottom="true"
+        >
     
+    <TextView
+        android:id="@+id/tvUpdateBudget"
+        android:text="Update Budget"
+        android:gravity="center"
+        android:layout_centerInParent="true"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="30sp" />
+    </RelativeLayout>
 
 </RelativeLayout>

@@ -1,7 +1,9 @@
 package com.hack.rice.pursonal;
 
 import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -15,6 +17,16 @@ public class LoginActivity extends Activity {
     public void onCreate(Bundle b) {
         super.onCreate(b);
         setContentView(R.layout.login);
+
+        SharedPreferences prefs = LoginActivity.this.getSharedPreferences("com.hack.rice.pursonal", Context.MODE_PRIVATE);
+
+        if(prefs.contains("username")) {
+            Intent intent = new Intent(LoginActivity.this, MainActivity.class);
+            intent.putExtra("username", prefs.getString("username", "").toLowerCase().trim());
+            intent.putExtra("password", "");
+            startActivity(intent);
+        
+        }
         
         findViewById(R.id.bLogin).setOnClickListener(listener);
     }
@@ -30,19 +42,16 @@ public class LoginActivity extends Activity {
         
         @Override
         public void onClick(View v) {
-            postLoginData();
-            
-            // go to main if we have demographic data
-            // go to data input otherwise
             Intent intent = new Intent(LoginActivity.this, MainActivity.class);
-            intent.putExtra("username", ""+((TextView)findViewById(R.id.etUsername)).getText());
+            
+            String username = ""+((TextView)findViewById(R.id.etUsername)).getText();
+            SharedPreferences prefs = LoginActivity.this.getSharedPreferences("com.hack.rice.pursonal", Context.MODE_PRIVATE);
+            prefs.edit().putString("username", username).commit();
+            
+            intent.putExtra("username", username.toLowerCase().trim());
             intent.putExtra("password", ""+((TextView)findViewById(R.id.etPassword)).getText());
             startActivity(intent);
         }
     };
-    
-    private void postLoginData() {
-        
-    }
     
 }

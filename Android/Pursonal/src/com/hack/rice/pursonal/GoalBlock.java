@@ -1,8 +1,10 @@
 package com.hack.rice.pursonal;
 
+import android.app.Activity;
 import android.content.Context;
 import android.graphics.Typeface;
 import android.os.AsyncTask;
+import android.util.Log;
 import android.view.View;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
@@ -85,11 +87,8 @@ public class GoalBlock extends RelativeLayout {
                 while(getHeight() == 0)
                     try {
                         Thread.sleep(50);
-                    } catch (InterruptedException e) {
-                        // TODO Auto-generated catch block
-                        e.printStackTrace();
-                    }
-                updateBlock();
+                    } catch (InterruptedException e) {}
+                ((Activity)context).runOnUiThread(new Runnable(){public void run(){updateBlock();}});
                 return null;
             }
 
@@ -111,6 +110,8 @@ public class GoalBlock extends RelativeLayout {
             leftBlock.getLayoutParams().height = 0;
         }
         
+        // reloads the view
+        addView(new View(context));
     }
     
 }
