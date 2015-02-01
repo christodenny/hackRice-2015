@@ -1,5 +1,23 @@
 var ref = new Firebase("https://intense-heat-8336.firebaseio.com");
 var auth = ref.getAuth();
+
+var toolbar = document.getElementById("toolbar");
 if(auth === null) {
-	window.open("index.html", "_self");
+	// <li class="active"><a href="LogIn.html">Log In</a></li>
+    var child = document.createElement("li");
+    child.class = "active";
+    var grandchild = document.createElement("a");
+    grandchild.href="LogIn.html";
+    grandchild.innerText = "Log In";
+    child.appendChild(grandchild);
+    toolbar.appendChild(child);
+}
+else {
+    var child = document.createElement("li");
+    child.class = "active";
+    var grandchild = document.createElement("a");
+    grandchild.href="logout.html";
+    grandchild.innerText = "Log Out";
+    child.appendChild(grandchild);
+    toolbar.appendChild(child);
 }
