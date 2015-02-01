@@ -35,7 +35,7 @@
     </head>
 
     <body>
-    <nav class="navbar navbar-default navbar-fixed-top" id="toolbar">
+    <nav class="navbar navbar-default navbar-fixed-top">
           <div class="container-fluid">
             <div class="navbar-header">
               <a class="navbar-brand" href="index.html">A Pursonal App for you!</a>
@@ -44,57 +44,57 @@
               <ul class="nav navbar-nav">
                 <li><a href="ProfileHome.html">Profile Home</a></li>
               </ul>
+              <ul class="nav navbar-nav navbar-right" id="toolbar"></ul>
             </div>
           </div>
         </nav>
-        <script src="checkLogin.js"></script>
+        <script type="text/javascript" src="checkLogin.js"></script>
 
+        <form class="form-signin" id="demographics_form" method="POST">
+            <!-- Age, Location, Gender, Student-->
+            <h2 class="form-signin-heading">Enter Your Information</h2>
+            <input type="text" name="age" id="age" class="form-control" placeholder="Age" required=""> 
+            <label for="location">Where do you live?</label>
+            <select id="location">
+                <option value="New York">New York</option>
+                <option value="Los Angeles">Los Angeles</option>
+                <option value="Chicago">Chicago</option>
+                <option value="Houston">Houston</option>
+                <option value="Philadelphia">Philadelphia</option>
+                <option value="Phoenix">Phoenix</option>
+                <option value="San Diego">San Diego</option>
+                <option value="San Antonio">San Antonio</option>
+                <option value="Dallas">Dallas</option>
+                <option value="Detroit">Detroit</option>
+                <option value="San Jose">San Jose</option>
+                <option value="Indianapolis">Indianapolis</option>
+                <option value="Jacksonville">Jacksonville</option>
+                <option value="San Francisco">San Francisco</option>
+                <option value="Columbus">Columbus</option>
+                <option value="Austin">Austin</option>
+                <option value="Memphis">Memphis</option>
+                <option value="Baltimore">Baltimore</option>
+                <option value="Charlotte">Charlotte</option>
+                <option value="Fort Worth">Fort Worth</option>
+                <option value="Boston">Boston</option>
+                <option value="Milwaukee">Milwaukee</option>
+                <option value="El Paso">El Paso</option>
+            </select>
+            <select id="gender">
+                <option value="Male">Male</option>
+                <option value="Female">Female</option>
+                <option value="non-Binary">Non-Binary</option>
+            </select>
+            <p>
+            </p>
+            <label for="student">Are you a student?</label>
+            <input type="radio" name="student" value="Yes">Yes
+            <input type="radio" name="student" value="No">No
+            <p>
+            </p>
+            <input type="submit" method="POST" value="Finish">
+        </form>
+        <script type="text/javascript" src="UpdateDemo.js"></script>
     </body>
-
-    <form class="form-signin" id="demographics_form" method="POST">
-        <!-- Age, Location, Gender, Student-->
-        <h2 class="form-signin-heading">Enter Your Information</h2>
-        <input type="text" name="age" id="age" class="form-control" placeholder="Age" required=""> 
-        <label for="location">Where do you live?</label>
-        <select id="location">
-            <option value="New York">New York</option>
-            <option value="Los Angeles">Los Angeles</option>
-            <option value="Chicago">Chicago</option>
-            <option value="Houston">Houston</option>
-            <option value="Philadelphia">Philadelphia</option>
-            <option value="Phoenix">Phoenix</option>
-            <option value="San Diego">San Diego</option>
-            <option value="San Antonio">San Antonio</option>
-            <option value="Dallas">Dallas</option>
-            <option value="Detroit">Detroit</option>
-            <option value="San Jose">San Jose</option>
-            <option value="Indianapolis">Indianapolis</option>
-            <option value="Jacksonville">Jacksonville</option>
-            <option value="San Francisco">San Francisco</option>
-            <option value="Columbus">Columbus</option>
-            <option value="Austin">Austin</option>
-            <option value="Memphis">Memphis</option>
-            <option value="Baltimore">Baltimore</option>
-            <option value="Charlotte">Charlotte</option>
-            <option value="Fort Worth">Fort Worth</option>
-            <option value="Boston">Boston</option>
-            <option value="Milwaukee">Milwaukee</option>
-            <option value="El Paso">El Paso</option>
-        </select>
-        <select id="gender">
-            <option value="Male">Male</option>
-            <option value="Female">Female</option>
-            <option value="non-Binary">Non-Binary</option>
-        </select>
-        <p>
-        </p>
-        <label for="student">Are you a student?</label>
-        <input type="radio" name="student" value="Yes">Yes
-        <input type="radio" name="student" value="No">No
-        <p>
-        </p>
-        <input type="submit" method="POST" value="Finish">
-    </form>
-    <script type="text/javascript" src="UpdateDemo.js"></script>
 
 </html>

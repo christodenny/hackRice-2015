@@ -9,6 +9,7 @@ function register() {
     password : document.form.password.value
   }, function(error) {
     if (error !== null) {
+      console.log(error);
       alert("This username is already in use!");
     }
     else {
