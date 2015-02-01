@@ -25,12 +25,13 @@ function register() {
       userRef.update(user);
       ref.authWithPassword({
         email : document.form.email.value,
-        password : document.form.password.value,
-        remember : "sessionOnly"
+        password : document.form.password.value
       }, function(error) {
         if(error !== null) {
           alert("wtf");
         }
+      }, {
+        remember : "sessionOnly"
       });
       console.log(ref.getAuth());
       window.open("InputDemographics.html", "_self");
