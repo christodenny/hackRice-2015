@@ -17,10 +17,13 @@
 
     <!-- Custom styles for this template -->
     <link rel="stylesheet" type="text/css" href="stylesheet.css">
+
+    <!-- Firebase -->
+    <script src="https://cdn.firebase.com/js/client/2.1.2/firebase.js"></script>
   </head>
 
   <body>
-    <nav class="navbar navbar-default">
+    <nav class="navbar navbar-default navbar-fixed-top">
           <div class="container-fluid">
             <div class="navbar-header">
               <a class="navbar-brand" href="index.html">A Pursonal App for you!</a>
@@ -33,10 +36,30 @@
             </div>
           </div>
         </nav>
+  </body>
+
+  <form method="POST" name="form" id="form" class="form-signin">
+    <h2 class="form-signin-heading">Enter Your Credentials</h2>
+        <p>
+        <input type="text" name="first_name" id="firstName" class="form-control" placeholder="First Name" required="" autofocus="">
+      </p>
+      <p>
+        <input type="text" name="last_name" id="lastName" class="form-control" placeholder="Last Name" required="">
+      </p>
+      <p id="emailParent">
+        <input type="email" name="email" id="email" class="form-control" placeholder="Email" required="" >
+      </p>
+      <p>
+        <input type="password" name="password" id="password" class="form-control" placeholder="Password" required="">  
+      </p>
+      <p>
+        <input type="password" name="confirmPassword" id="confirmPassword" class="form-control" placeholder="Confirm" required="">  
+      </p>
+        <button class="btn btn-lg btn-primary btn-block" type="submit">Sign Up!</button>
+    </form>
+    <script type="text/javascript" src="register.js"></script>
     <div class="container">
       
     </div>
   </body>
-
-
 <html>
