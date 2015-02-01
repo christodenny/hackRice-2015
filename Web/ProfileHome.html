@@ -75,10 +75,15 @@
                     <h4>Current Use</h4>
                 </div>
             </div>
-            <div id="piechart" style="width: 900px; height:500px;"></div>
-            <ul id="boughtList">
-
-            </ul>
+            <div class="row placeholders">
+                <div class="col-xs-6 col-sm-3 placeholder"> 
+                    <div id="piechart" style="width: 500px; height:500px;"></div>
+                </div>
+                <div class="col-xs-6 col-sm-3 placeholder">
+                    <ul id="boughtList" style="list-style-type:none">
+                </div>
+                </ul>
+            </div>
 
         </div>
       </div>
@@ -146,10 +151,17 @@ ref.once('value', function(snapshot){
         function updateVisualization(email, title, maxMoney, snapshot) {
 
             
-            alert(email + " " + title + " " + maxMoney);
+            // alert(email + " " + title + " " + maxMoney);
         var keys = ['0-5', '5-20', '20-50', '50+'];
         var dict = [['Price Range', 'Number Purchases'], [keys[0], 0], 
                     [keys[1], 0], [keys[2], 0], [keys[3], 0]];
+
+        var boughtList = document.getElementById("boughtList");
+        while(boughtList.hasChildNodes()) {
+            boughtList.removeChild(boughtList.childNodes[0]);
+        }
+        boughtList.style = "list-style-type:none";
+
 
         var usedSoFar = 0;
         var obj = snapshot.val().users[email].Purchases;
@@ -171,6 +183,10 @@ ref.once('value', function(snapshot){
                             dict[4][1]++;
                         }
                         usedSoFar += cost;
+
+                        var miniChild = document.createElement("li");
+                        miniChild.innerText = info + " - $" + parseFloat(Math.round(cost * 100) / 100).toFixed(2);;
+                        boughtList.appendChild(miniChild);
                     }
                 }
             }
@@ -186,13 +202,13 @@ ref.once('value', function(snapshot){
         var currentUse = document.getElementById("currentText");
         var bigTitle = document.getElementById("BIGTITLE");
 
-        budgetText.value = "$"+ maxMoney+"";
-        currentUse.value = "$" + usedSoFar + "";
+        budgetText.value = "$"+ parseFloat(Math.round(maxMoney * 100) / 100).toFixed(2) +"";
+        currentUse.value = "$" + parseFloat(Math.round(usedSoFar * 100) / 100).toFixed(2) + "";
         bigTitle.innerText = "Hi there, " + window.atob(email);
 
         chart.draw(data, options);
 
-        
+
     }
 
 
