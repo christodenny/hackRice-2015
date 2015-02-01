@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent" >
+
+    <View
+        android:id="@+id/m1"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_centerInParent="true" />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_above="@+id/m1" >
+
+        <View
+            android:id="@+id/center"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_centerInParent="true"
+            android:layout_margin="5dp" />
+
+        <EditText
+            android:id="@+id/etUsername"
+            android:layout_width="200dp"
+            android:layout_height="wrap_content"
+            android:layout_above="@+id/etPassword"
+            android:layout_centerHorizontal="true"
+            android:layout_margin="5dp"
+            android:hint="Username" />
+
+        <EditText
+            android:id="@+id/etPassword"
+            android:layout_width="200dp"
+            android:layout_height="wrap_content"
+            android:layout_above="@+id/center"
+            android:layout_centerHorizontal="true"
+            android:layout_margin="5dp"
+            android:hint="Password" />
+
+        <Button
+            android:id="@+id/bLogin"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/center"
+            android:layout_centerHorizontal="true"
+            android:layout_margin="5dp"
+            android:background="#99cc00"
+            android:text="Balance\n&apos;dat Budget!" />
+    </RelativeLayout>
+
+</RelativeLayout>
