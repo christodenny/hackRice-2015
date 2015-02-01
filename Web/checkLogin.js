@@ -1,4 +1,10 @@
 var ref = new Firebase("https://intense-heat-8336.firebaseio.com");
+/*ref.authWithPassword({
+    email : "christo.denny@gmail.com",
+    password: "password"
+}, function(error) {
+    console.log(error);
+});*/
 var auth = ref.getAuth();
 
 var toolbar = document.getElementById("toolbar");

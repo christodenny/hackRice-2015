@@ -13,15 +13,15 @@ function register() {
       alert("This username is already in use!");
     }
     else {
-      console.log("no error");
+      alert("no error");
       var userRef = ref.child("users");
       var user = {};
-      console.log("make user");
+      alert("make user");
       user[window.btoa(document.form.email.value)] = {
         firstName : document.form.first_name.value,
         lastName : document.form.last_name.value
       };
-      console.log("made user");
+      alert("made user");
       userRef.update(user);
       ref.authWithPassword({
         email : document.form.email.value,
@@ -34,6 +34,7 @@ function register() {
         remember : "sessionOnly"
       });
       console.log(ref.getAuth());
+      alert("finished auth");
       window.open("InputDemographics.html", "_self");
     }
   });
