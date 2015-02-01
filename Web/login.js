@@ -6,16 +6,14 @@ function login() {
   }
   var handler = function(error) {
   	if(error === null) {
-  		alert("Invalid username/password combination!");
-  	} else {
   		window.open("InputDemographics.html", "_self");
+  	} else {
+  		alert("Invalid username/password combination!");
   	}
   };
-  if(document.getElementById("checkbox").checked) {
-  	ref.authWithPassword(user, handler, "default");
-  } else {
-  	ref.authWithPassword(user, handler, "sessionOnly");
-  }
+  ref.authWithPassword(user, handler, {
+  	remember: document.getElementById("checkbox").checked ? "default" : "sessionOnly"
+  });
 }
 document.getElementById("form").addEventListener("submit", function(e) {
     e.preventDefault();
