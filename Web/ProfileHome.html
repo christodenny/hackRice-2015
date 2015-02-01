@@ -64,18 +64,22 @@
           
         </div>
         <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main" id="dataVisualization">
-            <h1 class="page-header">Hi there! [name]</h1>
+            <h1 class="page-header" id="BIGTITLE">Hi there! [name]</h1>
             <div class="row placeholders">
                 <div class="col-xs-6 col-sm-3 placeholder"> 
-                    <input type="text" name="budget" value="$500.00">
+                    <input type="text" name="budget" value="$500.00" id="budgetText">
                     <h4>Budget</h4>
                 </div>
                 <div class="col-xs-6 col-sm-3 placeholder">
-                     <input type="text" name="money_used" value="$300.00" readonly>
+                     <input type="text" name="money_used" value="$300.00" id="currentText" readonly>
                     <h4>Current Use</h4>
                 </div>
             </div>
             <div id="piechart" style="width: 900px; height:500px;"></div>
+            <ul id="boughtList">
+
+            </ul>
+
         </div>
       </div>
     </div>
@@ -95,8 +99,17 @@
         // ]);
 
 var ref = new Firebase("https://intense-heat-8336.firebaseio.com");
+
+
 var user = ref.getAuth();
 var email = window.btoa(user.password.email);
+var firstName;
+ref.once('value', function(snapshot){
+                var obj = snapshot.val().users[window.btoa(email)];
+                firstName = obj.firstName;
+            }, function(error) {
+
+            });
         ref.once('value', function(snapshot) {
             var sidebar = document.getElementById("theBigSidebar");
             var obj = snapshot.val().users[email].Budget;
@@ -111,11 +124,15 @@ var email = window.btoa(user.password.email);
                     child.class="active";
                     var grandchild = document.createElement("a");
                     grandchild.fakeField = key;
+                    grandchild.fakeFieldMaxMoney = maxMoney;
+                    grandchild.fakeFieldSnapshot = snapshot;
                     grandchild.addEventListener('click', function() {
                         var title = this.fakeField;
+                        var maxMoney = this.fakeFieldMaxMoney;
+                        var snapshot = this.fakeFieldSnapshot;
                         console.log(title);
                         var title2 = title;
-                        updateVisualization("", email, title, maxMoney, snapshot);
+                        updateVisualization(email, title, maxMoney, snapshot);
                     });
                     grandchild.innerText=key;
                     child.appendChild(grandchild);
@@ -126,18 +143,15 @@ var email = window.btoa(user.password.email);
             console.log(error);
         });
 
-        function updateVisualization(firstName, email, title, maxMoney, snapshot) {
-            ref.on('value', function(snapshot){
-                var obj = snapshot.val().users[window.btoa(email)];
-                firstName = obj.firstName;
-            }, function(error) {
+        function updateVisualization(email, title, maxMoney, snapshot) {
 
-            });
-            alert(firstName + " " + email + " " + title + " " + maxMoney);
+            
+            alert(email + " " + title + " " + maxMoney);
         var keys = ['0-5', '5-20', '20-50', '50+'];
         var dict = [['Price Range', 'Number Purchases'], [keys[0], 0], 
                     [keys[1], 0], [keys[2], 0], [keys[3], 0]];
 
+        var usedSoFar = 0;
         var obj = snapshot.val().users[email].Purchases;
         for(var key in obj) {
             if(obj.hasOwnProperty(key)) {
@@ -156,6 +170,7 @@ var email = window.btoa(user.password.email);
                         } else {
                             dict[4][1]++;
                         }
+                        usedSoFar += cost;
                     }
                 }
             }
@@ -167,8 +182,20 @@ var email = window.btoa(user.password.email);
 
         var chart = new google.visualization.PieChart(document.getElementById('piechart'));
 
+        var budgetText = document.getElementById("budgetText");
+        var currentUse = document.getElementById("currentText");
+        var bigTitle = document.getElementById("BIGTITLE");
+
+        budgetText.value = "$"+ maxMoney+"";
+        currentUse.value = "$" + usedSoFar + "";
+        bigTitle.innerText = "Hi there, " + window.atob(email);
+
         chart.draw(data, options);
+
+        
     }
+
+
 
         // var options = {
         //   title: 'My Daily Activities'
