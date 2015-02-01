@@ -18,6 +18,7 @@ function update() {
        }
        // console.log(dict);
        user.update(dict);
+       window.open("ProfileHome.html", "_self");
     }
 }
 document.getElementById("demographics_form").addEventListener("submit", function(e) {

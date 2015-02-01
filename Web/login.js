@@ -6,7 +6,8 @@ function login() {
   }
   var handler = function(error) {
   	if(error === null) {
-  		window.open("InputDemographics.html", "_self");
+      window.open("ProfileHome.html", "_self");
+  		// window.open("InputDemographics.html", "_self");
   	} else {
   		alert("Invalid username/password combination!");
   	}
